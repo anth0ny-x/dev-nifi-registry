@@ -11,6 +11,39 @@
         "connections" : [ {
           "backPressureDataSizeThreshold" : "1 GB",
           "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 1208.0,
+            "y" : 320.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+            "id" : "a03f267d-30a7-35d7-b61f-b9dfbd3e7521",
+            "name" : "ExecuteScript",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+          "identifier" : "26776603-9e3c-3a80-8a44-a535b348ece1",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "getNextPage" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+            "id" : "48033588-cb6b-3732-bd92-7464b60af593",
+            "name" : "RouteOnAttribute",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
           "bends" : [ ],
           "componentType" : "CONNECTION",
           "destination" : {
@@ -106,13 +139,13 @@
           "destination" : {
             "comments" : "",
             "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
-            "id" : "0b39dcce-b360-3256-8c0c-921d7a385682",
-            "name" : "JSONArray to JSONLines",
+            "id" : "48033588-cb6b-3732-bd92-7464b60af593",
+            "name" : "RouteOnAttribute",
             "type" : "PROCESSOR"
           },
           "flowFileExpiration" : "0 sec",
           "groupIdentifier" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
-          "identifier" : "aef89bb0-00b0-3236-a953-5470dddb17f7",
+          "identifier" : "d9c1c290-b470-3f75-9fa7-bc1b14dd6d61",
           "labelIndex" : 1,
           "loadBalanceCompression" : "DO_NOT_COMPRESS",
           "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
@@ -166,14 +199,44 @@
           "destination" : {
             "comments" : "",
             "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+            "id" : "0b39dcce-b360-3256-8c0c-921d7a385682",
+            "name" : "JSONArray to JSONLines",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+          "identifier" : "01f39f19-cee4-3bae-b98d-57e720beecfe",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "Response" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+            "id" : "cadfed66-87c8-339d-8cd0-ef04dff9d1dd",
+            "name" : "InvokeHTTP",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
             "id" : "cadfed66-87c8-339d-8cd0-ef04dff9d1dd",
             "name" : "InvokeHTTP",
             "type" : "PROCESSOR"
           },
           "flowFileExpiration" : "0 sec",
           "groupIdentifier" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
-          "identifier" : "63903b2d-3cba-31c0-98df-6aa792b5de78",
-          "labelIndex" : 1,
+          "identifier" : "b915f48a-6008-30f6-96f1-e3a1f28db9b6",
+          "labelIndex" : 0,
           "loadBalanceCompression" : "DO_NOT_COMPRESS",
           "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
           "name" : "",
@@ -976,6 +1039,51 @@
         },
         "processGroups" : [ ],
         "processors" : [ {
+          "autoTerminatedRelationships" : [ "unmatched" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.12.1"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "e653df94-0770-3aeb-a824-a13bc1e2a30d",
+          "identifier" : "48033588-cb6b-3732-bd92-7464b60af593",
+          "name" : "RouteOnAttribute",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1320.0,
+            "y" : 392.0
+          },
+          "properties" : {
+            "Routing Strategy" : "Route to Property name",
+            "getNextPage" : "${pageNumber:lt(3):and(${x-total-count:ge(200)})}"
+          },
+          "propertyDescriptors" : {
+            "Routing Strategy" : {
+              "displayName" : "Routing Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Routing Strategy",
+              "sensitive" : false
+            },
+            "getNextPage" : {
+              "displayName" : "getNextPage",
+              "identifiesControllerService" : false,
+              "name" : "getNextPage",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.RouteOnAttribute",
+          "yieldDuration" : "1 sec"
+        }, {
           "autoTerminatedRelationships" : [ "original", "failure" ],
           "bulletinLevel" : "WARN",
           "bundle" : {
@@ -998,7 +1106,8 @@
           "properties" : {
             "record-writer" : "cc0dded9-37bc-3c1f-82b3-74d3d486a79b",
             "postcode" : "/postcode",
-            "record-reader" : "22f7232c-595b-340d-880c-5f12854b7b51"
+            "record-reader" : "22f7232c-595b-340d-880c-5f12854b7b51",
+            "state" : "/state"
           },
           "propertyDescriptors" : {
             "record-writer" : {
@@ -1017,6 +1126,12 @@
               "displayName" : "Record Reader",
               "identifiesControllerService" : true,
               "name" : "record-reader",
+              "sensitive" : false
+            },
+            "state" : {
+              "displayName" : "state",
+              "identifiesControllerService" : false,
+              "name" : "state",
               "sensitive" : false
             }
           },
@@ -1312,8 +1427,8 @@
             "y" : 312.0
           },
           "properties" : {
-            "Script Engine" : "Groovy",
-            "Script Body" : "import org.apache.commons.io.IOUtils\nimport java.nio.charset.StandardCharsets\nimport groovy.json.JsonSlurper\nimport java.time.Instant\nimport java.time.ZoneId\nimport java.time.format.DateTimeFormatter\n\ndef formatter=DateTimeFormatter.ofPattern(\"yyyy-MM-dd'T'HHmmss\").withZone(ZoneId.systemDefault());\ndef jsonSlurper = new JsonSlurper()\nflowFile = session.get()\nif(!flowFile) return\n\ntry{\n  outFlowFile = session.write(flowFile, {inputStream, outputStream ->\n      def jsonObj = jsonSlurper.parseText(IOUtils.toString(inputStream, StandardCharsets.UTF_8))\n      def res = '{\"listingType\":\"Sale\",\"locations\":[{\"state\":\"ACT\",\"region\":\"\",\"area\":\"\",\"suburb\":\"\",\"postCode\":' + \n                jsonObj.postcode + \n                ',\"includeSurroundingSuburbs\":false}],\"customSort\":{\"elements\":[{\"field\":\"AdId\",\"direction\":\"Descending\"}],\"boostPrimarySuburbs\":true},\"pageNumber\":0,\"pageSize\":200,\"updatedSince\":\"2020-08-01T00:00:00.000Z\",\"listedSince\":\"2020-08-01T00:00:00.000Z\"}'\n      \n      outputStream.write(res.getBytes(StandardCharsets.UTF_8))\n    } as StreamCallback)\n  \n  \n  outFlowFile = session.putAttribute(outFlowFile, 'filename', formatter.format(Instant.now())+'.json')\n  session.transfer(outFlowFile, REL_SUCCESS)\n}\ncatch (Exception e){\n  log.error('Groovy Script Error',e)\n  session.transfer(flowFile, REL_FAILURE)\n}"
+            "Script File" : "/data/GenerateDomainSearchFlowFile.groovy",
+            "Script Engine" : "Groovy"
           },
           "propertyDescriptors" : {
             "Script File" : {
