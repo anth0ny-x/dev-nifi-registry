@@ -1,4 +1,7 @@
 flows:
+  dc7d2f21-d5cd-4e9c-b03f-161feef3f70c: {ver: 1, file: sample-kafka-publisher.snapshot,
+    comments: '', author: anonymous, created: 1628840607328, flowName: sample-kafka-publisher,
+    flowDesc: ''}
   7e9eac12-ad47-4ae6-8e50-c31a82c1f7e9: {ver: 9, file: Domain-API.snapshot, comments: '',
     author: anonymous, created: 1602939231723, flowName: Domain-API, flowDesc: ''}
 layoutVer: 1
